@@ -23,3 +23,16 @@ const (
 	Function  Type = "FUNCTION"
 	Let       Type = "LET"
 )
+
+var keywords = map[string]Type{
+	"fn":  Function,
+	"let": Let,
+}
+
+func LookupIdent(ident string) Type {
+	if tok, ok := keywords[ident]; ok {
+		return tok
+	}
+
+	return Ident
+}
